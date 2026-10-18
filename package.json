@@ -1,20 +1,26 @@
 {
-  "name": "nitish-analog-portfolio",
+  "name": "nitish-portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Personal portfolio of Nitish Narayan Singh — an analog, editorial, WebGL-driven experience built with React.",
+  "description": "Personal portfolio of Nitish Narayan Singh, Software Engineer, built with React, GSAP, Lenis, framer-motion and Three.js.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "12.23.12",
+    "gsap": "3.13.0",
+    "lenis": "1.3.4",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "three": "0.178.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "4.3.3",
     "@vitejs/plugin-react": "4.3.3",
+    "tailwindcss": "4.3.3",
     "vite": "5.4.10"
   }
 }
