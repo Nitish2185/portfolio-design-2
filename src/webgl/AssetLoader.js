@@ -66,7 +66,7 @@ export default class AssetLoader {
   }
 
   // Scroll ruler ticks in, the camera spins up into frame and the curtain lifts
-  outro(canonF1) {
+  outro(canonF1, onUnblocked) {
     const pins = qsa("[data-scroller-pin]");
     const cursor = qs("#scroller-cursor");
 
@@ -83,6 +83,7 @@ export default class AssetLoader {
       this.element.style.pointerEvents = "none";
       this.scrollContainer.classList.remove("blocked");
       canonF1.setupScrollTriggers();
+      onUnblocked?.();
     });
   }
 }
