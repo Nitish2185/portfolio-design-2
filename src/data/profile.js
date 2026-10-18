@@ -22,7 +22,7 @@ export const socials = [
 ];
 
 export const hero = {
-  eyebrow: "Building Practical Digital Solutions.",
+  eyebrow: "Building Practical Solutions.",
   tagline: "Software Engineer · Full Stack · ServiceNow",
   description:
     "Software Engineer with experience in full stack development and ServiceNow, building reliable web applications, business workflows, and user-focused digital solutions.",
