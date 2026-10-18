@@ -140,6 +140,22 @@ export default function Contact() {
                 <div className="flex items-start gap-3.5">
                   <DetailIcon>
                     <svg {...iconProps}>
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </DetailIcon>
+                  <div>
+                    <p className="text-[11px] text-ash uppercase tracking-wider mb-0.5 font-semibold">Phone</p>
+                    <a
+                      href={`tel:${profile.phone.replace(/\s/g, "")}`}
+                      className="text-sm text-white hover:text-ember transition-colors font-medium"
+                    >
+                      {profile.phone}
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3.5">
+                  <DetailIcon>
+                    <svg {...iconProps}>
                       <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
                       <circle cx="12" cy="10" r="3" />
                     </svg>
@@ -163,6 +179,14 @@ export default function Contact() {
             </div>
 
             <div className="mt-8 pt-6 border-t border-white/5">
+              <a
+                href={profile.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-white/5 border border-white/10 hover:border-ember/40 hover:text-ember transition-all duration-300"
+              >
+                Download Résumé <span aria-hidden="true">↓</span>
+              </a>
               <p className="text-[11px] text-ash uppercase tracking-wider mb-3.5 font-semibold">Connect</p>
               <div className="flex gap-2.5 sm:gap-3 flex-wrap">
                 {socials.map((s) => (
