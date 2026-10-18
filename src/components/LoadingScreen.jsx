@@ -19,7 +19,7 @@ export default function LoadingScreen({ onComplete }) {
           .timeline({ onComplete })
           .to(counterRef.current, { opacity: 0, y: -30, duration: 0.4, ease: "power2.in" })
           .to(nameRef.current, { opacity: 0, y: -30, duration: 0.4, ease: "power2.in" }, "<0.1")
-          .to(barRef.current.parentElement, { opacity: 0, duration: 0.3 }, "<0.1")
+          .to(barRef.current?.parentElement, { opacity: 0, duration: 0.3 }, "<0.1")
           .to(screenRef.current, { yPercent: -100, duration: 1, ease: "expo.inOut" });
 
       const progress = { value: 0 };
@@ -29,9 +29,10 @@ export default function LoadingScreen({ onComplete }) {
         duration: 2.5,
         ease: "power2.inOut",
         onUpdate: () => {
+          // Refs are already detached when the context reverts on unmount
           const value = Math.round(progress.value);
-          counterRef.current.textContent = String(value);
-          barRef.current.style.transform = `scaleX(${value / 100})`;
+          if (counterRef.current) counterRef.current.textContent = String(value);
+          if (barRef.current) barRef.current.style.transform = `scaleX(${value / 100})`;
         },
       });
       tl.fromTo(
