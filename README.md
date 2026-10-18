@@ -1,4 +1,4 @@
-# Nitish Narayan Singh — Portfolio
+# Shivendra Vishwakarma — Portfolio
 
 Personal portfolio built with **React + Vite**, **Tailwind CSS v4**, **GSAP / ScrollTrigger**, **Lenis**, **framer-motion** and **Three.js**.
 The design and motion follow [jishnumondal.vercel.app](https://jishnumondal.vercel.app/).
@@ -13,6 +13,7 @@ The design and motion follow [jishnumondal.vercel.app](https://jishnumondal.verc
 | Buttons | Magnetic pull toward the cursor with a springy release |
 | Philosophy | Scroll-to-expand media: rounded, blurred window opens to full bleed, statement fades up |
 | Projects | Per-character title reveal; glass cards rise, copy slides in from the side, screenshots scale up |
+| Skills & Profiles | LeetCode / CodeChef / GitHub cards rise in, solved-question counters count up, difficulty bars fill |
 | Experience | Hover states (static, as on the reference) |
 | Contact | Glass cards rise in with a staggered ease; form with loading / success / error states |
 | Global | Lenis smooth scroll, top scroll-progress bar, film-grain noise overlay |
@@ -27,7 +28,7 @@ npm run build    # production build in dist/
 
 ## Editing content
 
-All copy and links are in [`src/data/profile.js`](src/data/profile.js). The philosophy statement is still lorem ipsum.
+All copy and links are in [`src/data/profile.js`](src/data/profile.js). Coding-profile numbers (LeetCode, CodeChef, GitHub) are a snapshot in `codingProfiles` — update them there.
 Images live in `public/images` (philosophy backdrop, currently a placeholder) and `public/projects` (project covers).
 
 ## Contact form
