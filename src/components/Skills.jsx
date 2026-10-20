@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "../lib/gsap";
 import { codingProfiles, skills, skillsIntro } from "../data/profile";
+import LeetCodeHeatmap from "./LeetCodeHeatmap";
 
 const josefin = { fontFamily: "var(--font-josefin), 'Josefin Sans', sans-serif" };
 
@@ -111,61 +112,81 @@ export default function Skills() {
           </p>
         </div>
 
-        {/* Coding profiles: solved questions only */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 mb-6 md:mb-8">
-          <div className="skills-animate glass-card p-5 sm:p-8 lg:col-span-6">
-            <ProfileHeader
-              icon="https://cdn.simpleicons.org/leetcode/ffffff"
-              name="LeetCode"
-              handle={leetcode.handle}
-              href={leetcode.href}
-            />
-            <Counter value={leetcode.solved} label="Questions solved" />
-            <div className="mt-6 space-y-4">
-              {leetcode.breakdown.map((d) => (
-                <div key={d.label}>
-                  <div className="flex justify-between text-xs mb-1.5">
-                    <span className="font-semibold" style={{ color: d.color }}>
-                      {d.label}
-                    </span>
-                    <span className="text-ash font-mono">
-                      <span className="text-white font-semibold">{d.solved}</span> / {d.total}
-                    </span>
-                  </div>
-                  <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
-                    <div
-                      data-bar=""
-                      className="h-full rounded-full origin-left"
-                      style={{
-                        width: `${Math.max(2, (d.solved / leetcode.solved) * 100)}%`,
-                        background: d.color,
-                        boxShadow: `0 0 12px ${d.color}66`,
-                      }}
-                    />
-                  </div>
+        {/* Coding profiles */}
+        <div className="space-y-6 md:space-y-8 mb-6 md:mb-8">
+          {/* LeetCode – full width with heatmap */}
+          <div className="skills-animate glass-card p-5 sm:p-8">
+            <div className="flex flex-col lg:flex-row lg:items-start lg:gap-10">
+              {/* Left: header + counter + difficulty bars */}
+              <div className="lg:w-64 shrink-0">
+                <ProfileHeader
+                  icon="https://cdn.simpleicons.org/leetcode/ffffff"
+                  name="LeetCode"
+                  handle={leetcode.handle}
+                  href={leetcode.href}
+                />
+                <Counter value={leetcode.solved} label="Questions solved" />
+                <div className="mt-6 space-y-4">
+                  {leetcode.breakdown.map((d) => (
+                    <div key={d.label}>
+                      <div className="flex justify-between text-xs mb-1.5">
+                        <span className="font-semibold" style={{ color: d.color }}>
+                          {d.label}
+                        </span>
+                        <span className="text-ash font-mono">
+                          <span className="text-white font-semibold">{d.solved}</span> / {d.total}
+                        </span>
+                      </div>
+                      <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                        <div
+                          data-bar=""
+                          className="h-full rounded-full origin-left"
+                          style={{
+                            width: `${Math.max(2, (d.solved / leetcode.solved) * 100)}%`,
+                            background: d.color,
+                            boxShadow: `0 0 12px ${d.color}66`,
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Right: heatmap */}
+              <div className="flex-1 min-w-0 mt-8 lg:mt-0">
+                <p
+                  className="text-[11px] text-ash uppercase tracking-wider font-semibold mb-1"
+                  style={{ letterSpacing: "0.2em" }}
+                >
+                  Submission Activity
+                </p>
+                <LeetCodeHeatmap solvedCount={leetcode.solved} />
+              </div>
             </div>
           </div>
 
-          <div className="skills-animate glass-card p-5 sm:p-8 lg:col-span-3 flex flex-col justify-between">
-            <ProfileHeader
-              icon="https://cdn.simpleicons.org/codechef/ffffff"
-              name="CodeChef"
-              handle={codechef.handle}
-              href={codechef.href}
-            />
-            <Counter value={codechef.solved} label="Problems solved" />
-          </div>
+          {/* CodeChef + GitHub – two columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+            <div className="skills-animate glass-card p-5 sm:p-8 flex flex-col justify-between">
+              <ProfileHeader
+                icon="https://cdn.simpleicons.org/codechef/ffffff"
+                name="CodeChef"
+                handle={codechef.handle}
+                href={codechef.href}
+              />
+              <Counter value={codechef.solved} label="Problems solved" />
+            </div>
 
-          <div className="skills-animate glass-card p-5 sm:p-8 lg:col-span-3 flex flex-col justify-between">
-            <ProfileHeader
-              icon="https://cdn.simpleicons.org/github/ffffff"
-              name="GitHub"
-              handle={github.handle}
-              href={github.href}
-            />
-            <Counter value={github.repos} label="Public repositories" />
+            <div className="skills-animate glass-card p-5 sm:p-8 flex flex-col justify-between">
+              <ProfileHeader
+                icon="https://cdn.simpleicons.org/github/ffffff"
+                name="GitHub"
+                handle={github.handle}
+                href={github.href}
+              />
+              <Counter value={github.repos} label="Public repositories" />
+            </div>
           </div>
         </div>
 
